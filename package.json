@@ -1,44 +1,17 @@
 {
-  "name": "koinos-contract",
-  "version": "1.0.0",
-  "license": "MIT",
-  "dependencies": {
-    "@koinos/sdk-as": "^1.3.0",
-    "@koinosbox/contracts": "^3.0.0",
-    "@koinosbox/hdkoinos": "1.0.1",
-    "koilib": "^9.1.0",
-    "koinos-precompiler-as": "^1.7.2"
-  },
-  "devDependencies": {
-    "@as-covers/core": "^0.4.2",
-    "@as-pect/cli": "^8.0.1",
-    "@roamin/local-koinos": "^0.4.15",
-    "@roamin/protoc": "^2.4.0",
-    "@tsconfig/node16": "^1.0.4",
-    "@types/jest": "^29.4.0",
-    "@types/node": "^16.18.3",
-    "@typescript-eslint/eslint-plugin": "^5.39.0",
-    "@typescript-eslint/parser": "^5.39.0",
-    "as-proto": "npm:@koinos/as-proto@1.0.1",
-    "assemblyscript": "^0.27.29",
-    "dotenv": "^16.0.3",
-    "eslint": "^8.25.0",
-    "ethers": "^5.6.2",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.8.4",
-    "yaml": "^2.1.3"
-  },
+  "name": "pools",
+  "private": true,
   "scripts": {
-    "asbuild": "asc src/build/index.ts --config src/asconfig.json --use abort= --target release",
-    "precompile": "koinos-precompiler-as src",
-    "build": "yarn precompile && yarn asbuild",
-    "deploy": "ts-node scripts/deploy.ts",
-    "updateFrontend": "ts-node scripts/updateFrontend.ts",
-    "keys": "node generateKeys.js",
-    "lint": "eslint --max-warnings 0 --ext ts \"*/assembly/**/*.ts\"",
-    "setdata": "ts-node scripts/setData"
+    "build": "yarn workspace koinos-contract build",
+    "deploy": "yarn workspace koinos-contract deploy",
+    "dev": "yarn workspace website-koinos-contract dev",
+    "keys": "yarn workspace koinos-contract keys",
+    "updateFrontend": "yarn workspace koinos-contract updateFrontend",
+    "setdata": "yarn workspace koinos-contract setdata"
   },
-  "config": {
-    "protocVersion": "25.2"
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
   }
 }
