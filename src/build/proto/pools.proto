@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package pools;
+
+message GameState {
+  string pool_id = 1;  // Unique identifier for the pool
+  string current_token = 2;  // Current token being used in the pool
+  uint64 deposit_size = 3;   // Size of deposit required to enter the game
+  bool game_active = 4;      // Indicates if the game is currently active
+  uint64 pool_balance = 5;   // Current balance of the pool
+  string winner_address = 6; // Address of the last winner
+  uint64 last_winner_pool = 7; // Balance of the pool when the last winner was declared
+}
+
+message Deposit {
+  string player_address = 1; // Address of the player making the deposit
+  uint64 amount = 2;         // Amount deposited
+  uint64 token = 3;          // Token identifier used for the deposit
+}
+
+message AdminCommand {
+  oneof command {
+    string new_token = 1;     // Command to change the token used in the pool
+    uint64 new_deposit_size = 2; // Command to change the deposit size
+    bool start_game = 3;      // Command to start the game
+    bool stop_game = 4;       // Command to stop the game
+  }
+}

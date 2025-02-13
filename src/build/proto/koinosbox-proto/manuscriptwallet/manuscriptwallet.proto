@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package manuscriptwallet;
+
+import "koinos/options.proto";
+
+message authorities {
+   bool koin_address_authority = 1;
+   bool eth_address_authority = 2;
+   bytes eth_address = 3 [(koinos.btype) = HEX];
+}
+
+message execute_transaction_args {
+   string transaction = 1;
+   bool debug = 2;
+}
+
+message allow_token_operation {
+   bytes token = 1 [(koinos.btype) = ADDRESS];
+   uint64 limit = 2;
+   bytes spender = 3 [(koinos.btype) = ADDRESS];
+}
+
+message allow_nft_operation {
+   bytes collection = 1 [(koinos.btype) = ADDRESS];
+   bytes token_id = 2 [(koinos.btype) = HEX];
+   bytes spender = 3 [(koinos.btype) = ADDRESS];
+}
+
+message allow_other {
+   bytes contract_id = 1 [(koinos.btype) = ADDRESS];
+   uint32 entry_point = 2;
+   bytes caller = 3 [(koinos.btype) = ADDRESS];
+   bytes data = 4;
+}

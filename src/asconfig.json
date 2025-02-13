@@ -1,0 +1,37 @@
+{
+  "targets": {
+    "debug": {
+      "outFile": "./build/debug/Pools.wasm",
+      "textFile": "./build/debug/Pools.wat",
+      "sourceMap": true,
+      "debug": true
+    },
+    "release": {
+      "outFile": "./build/release/Pools.wasm",
+      "textFile": "./build/release/Pools.wat",
+      "sourceMap": true,
+      "optimizeLevel": 3,
+      "shrinkLevel": 0,
+      "converge": false,
+      "noAssert": false,
+      "use": ["BUILD_FOR_TESTING=0"]
+    },
+    "testnet": {
+      "outFile": "./build/testnet/Pools.wasm",
+      "textFile": "./build/testnet/Pools.wat",
+      "sourceMap": true,
+      "optimizeLevel": 3,
+      "shrinkLevel": 0,
+      "converge": false,
+      "noAssert": false,
+      "use": ["BUILD_FOR_TESTING=1"]
+    }
+  },
+  "options": {
+    "exportStart": "_start",
+    "disable": ["sign-extension", "bulk-memory"],
+    "disableWarning": "235",
+    "lib": [],
+    "use": ["abort="]
+  }
+}
