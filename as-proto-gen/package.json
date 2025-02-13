@@ -1,0 +1,40 @@
+{
+  "name": "@koinos/as-proto-gen",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "author": "Koinos Group <contact@koinos.group>",
+  "repository": "https://github.com/koinos/as-proto.git",
+  "tags": [
+    "assemblyscript",
+    "protobuf",
+    "proto",
+    "binary",
+    "webassembly",
+    "fast",
+    "generator"
+  ],
+  "files": [
+    "lib"
+  ],
+  "bin": {
+    "as-proto-gen": "bin/as-proto-gen"
+  },
+  "devDependencies": {
+    "@types/google-protobuf": "^3.15.5",
+    "@types/prettier": "^2.4.2"
+  },
+  "dependencies": {
+    "@types/node": "^17.0.34",
+    "google-protobuf": "^3.19.2",
+    "prettier": "^2.5.0",
+    "rimraf": "^3.0.2",
+    "ts-poet": "^4.9.0",
+    "typescript": "^4.6.4"
+  },
+  "scripts": {
+    "test": "echo 'no tests yet'",
+    "build": "rimraf build && tsc",
+    "prepublishOnly": "cp ../../README.md ./ && yarn build"
+  }
+}
